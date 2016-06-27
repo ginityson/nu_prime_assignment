@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<!-- tells entire html to use angular, myApp refers to script.js -->
+  <head>
+    <meta charset="utf-8">
+    <title>Code Challenge</title>
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/script.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Code Challenge</h1>
+    <!-- sets the $scope for assignmentController, is defined in script.js-->
+    <div ng-controller="assignmentController">
+      <!--  ng model tag refers to the script.js objectToSend-->
+      <input type="text" ng-model="assignment_number" name="name" placeholder="assignment_number" value="">
+      <input type="text" ng-model="student_name" name="name" placeholder="student_name" value="">
+      <input type="text" ng-model="score" name="name" placeholder="score" value="">
+      <input type="text" ng-model="date_completed" name="name" placeholder="date_completed" value="">
+      <!-- starts the function addRecord or getRecords when the user clicks on the button-->
+      <button type="button" ng-click="addRecord()" name="button">Add</button>
+      <!--'Add' button clicked initiating addRecord function go to script.js $scope.addRecord -->
+      <button type="button" ng-click="getRecords()"name="button">Get Assignment</button>
+      <!--'Get Assignment' button clicked initiating getRecord function go to script.js $scope.getRecord -->
+      <table>
+        <tr>
+          <!-- table headers -->
+          <th>assignment_number</th>
+          <th>student_name</th>
+          <th>score</th>
+          <th>date_completed</th>
+
+        </tr>
+        <!-- $scope.allTheAssignments(like a variable) refers back from getRecords function -->
+        <tr ng-repeat="anything in allTheAssignments">
+          <!--  variables of objectToSend in script.js-->
+          <!--  "anything" above refers to "anything." below and could be called anything really-->
+          <td>{{anything.assignment_number}}</td>
+          <td>{{anything.student_name}}</td>
+          <td>{{anything.score}}</td>
+          <td>{{anything.date_completed}}</td>
+
+        </tr>
+      </table>
+    </div>
+
+  </body>
+</html>
